@@ -1,23 +1,30 @@
 <div class="container">
-  <div class="logo">
-    <h1>BookSnap</h1>
-  </div>
-  <div class="description">
-    <p>
-      Start your morning by becoming smarter in 15 minutes: Get a book summary
-      delivered to your inbox daily!
-    </p>
-  </div>
-  <div class="subscribe">
-    <div class="label">Subscribe to Booksnap (it's free!):</div>
-    <input
-      type="email"
-      id="email-input"
-      name="email"
-      placeholder="Enter your email address"
-    />
-    <button mat-raised-button color="primary" (click)="openDialog()">
-      Subscribe
-    </button>
+  <div class="subcontainer">
+    <div class="logo">
+      <h1>BookSnap</h1>
+    </div>
+    <div class="description">
+      <p>
+        Start your morning by becoming smarter in 15 minutes: Get a book summary
+        delivered to your inbox daily!
+      </p>
+    </div>
+    <div class="subscribe">
+      <div class="label">Subscribe to Booksnap (it's free!):</div>
+      <input
+        type="email"
+        id="email-input"
+        name="email"
+        placeholder="Enter your email address"
+        #email_input
+      />
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="subscribe(email_input.value)"
+      >
+        Subscribe
+      </button>
+    </div>
   </div>
 </div>
