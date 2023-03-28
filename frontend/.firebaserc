@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "booksnap-a0591": {
+      "hosting": {
+        "frontend": [
+          "booksnap-a0591"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "booksnap-a0591"
+  }
+}
