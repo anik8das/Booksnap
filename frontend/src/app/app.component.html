@@ -9,13 +9,15 @@
     </p>
   </div>
   <div class="subscribe">
-    <div class="label">Subscribe to Booksnap:</div>
+    <div class="label">Subscribe to Booksnap (it's free!):</div>
     <input
       type="email"
       id="email-input"
       name="email"
       placeholder="Enter your email address"
     />
-    <button>Subscribe</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Subscribe
+    </button>
   </div>
 </div>
