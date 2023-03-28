@@ -16,10 +16,10 @@ export class AppComponent {
     this.db = getFirestore(this.firestore.app);
   }
 
-  async subscribe(email: string): Promise<void> {
+  subscribe(email: string): void {
     console.log(email);
     const subscriberCollection = collection(this.db, 'subscribers');
-    await addDoc(subscriberCollection, { email });
+    addDoc(subscriberCollection, { email });
     this.openDialog();
   }
 
