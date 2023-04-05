@@ -29,4 +29,4 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
-firestore_API_KEY.json
+firestore_API.json
