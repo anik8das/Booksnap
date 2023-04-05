@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"chatgpt": "^5.2.2",
+		"dotenv": "^16.0.3",
+		"firebase-admin": "^11.5.0",
+		"openai": "^3.2.1"
+	}
+}
