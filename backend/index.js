@@ -16,41 +16,65 @@ const db = fs.firestore();
 
 var subscriberEmails = [];
 var summary = "";
+var takeaway = "";
 var book = "";
 var books = [];
+var messages = [];
 
 async function generateBook() {
 	console.log("Generating book name...");
+	messages.push({
+		role: "user",
+		content: `suggest the name of a book which is not ${books.toString()}. Just type the name of the book without the author, quotes, or a period`,
+	});
 	book = (
-		await openai.createCompletion({
-			model: "text-davinci-003",
-			prompt: `suggest the name of a book which is not ${books.toString()}. Just type the name of the book without the author, quotes, or a period`,
-			max_tokens: 50,
+		await openai.createChatCompletion({
+			model: "gpt-3.5-turbo",
+			messages: messages,
 		})
-	).data.choices[0].text;
-	console.log("Book name:", book);
+	).data.choices[0].message;
+	messages.push(book);
+	console.log("Book name:", book.content);
 }
 
 async function getUsedBookList() {
 	console.log("Getting used books...");
 	const bookDocs = (await db.collection("books").get()).docs;
-	console.log(bookDocs);
 	for (let i = 0; i < bookDocs.length; i++) {
-		console.log(bookDocs[i].data().name);
+		books.push(bookDocs[i].data().name.replace(/(\r\n|\n|\r)/gm, ""));
 	}
-	console.log("Used books retrieved from Firebase!");
+	console.log("Used books retrieved from Firebase!", books);
 }
 
 async function generateSummary() {
 	console.log("Generating summary...");
+	messages.push({
+		role: "user",
+		content: `Give a in-depth plot summary of the book in 800 words. Don't include takeaways`,
+	});
 	summary = (
-		await openai.createCompletion({
-			model: "text-davinci-003",
-			prompt: `Write an in-depth summary of ${book} with all the takeaways`,
-			max_tokens: 2000,
+		await openai.createChatCompletion({
+			model: "gpt-3.5-turbo",
+			messages: messages,
 		})
-	).data.choices[0].text;
-	console.log("Summary generated!");
+	).data.choices[0].message;
+	messages.push(summary);
+	console.log("Summary generated!", summary.content);
+}
+
+async function generateTakeaway() {
+	console.log("Generating Takeaway...");
+	messages.push({
+		role: "user",
+		content: `Give the main takeaways of the book in 200 words.`,
+	});
+	takeaway = (
+		await openai.createChatCompletion({
+			model: "gpt-3.5-turbo",
+			messages: messages,
+		})
+	).data.choices[0].message;
+	console.log("Takeaway generated!", takeaway.content);
 }
 
 async function getSubscribers() {
@@ -97,9 +121,10 @@ async function uploadBookToFirebase() {
 }
 
 async function main() {
-	await generateBook();
 	await getUsedBookList();
+	await generateBook();
 	await generateSummary();
+	await generateTakeaway();
 	await getSubscribers();
 	await sendEmailToSubscribers();
 }
