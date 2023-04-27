@@ -148,7 +148,7 @@ async function sendEmailToSubscribers() {
 async function uploadBookToFirebase() {
 	console.log("Uploading book to Firebase...");
 	await db.collection("books").add({
-		name: book,
+		name: book.content,
 	});
 	console.log("Book uploaded to Firebase!");
 }
