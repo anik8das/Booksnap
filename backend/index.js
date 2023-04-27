@@ -98,8 +98,41 @@ async function sendEmailToSubscribers() {
 	var mailOptions = {
 		from: process.env.NODEMAILER_EMAIL,
 		to: subscriberEmails,
-		subject: `Daily Booksnap: Summary for ${book}`,
-		text: summary,
+		subject: `Daily Booksnap: ${book.content}`,
+		html: `
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<style type="text/css">
+
+				* {
+					box-sizing: border-box;
+					font-family: 'Courier New', 'Times New Roman', Times, serif;
+				}
+
+				body {
+					margin: 5px;
+					padding: 5px;
+				}
+
+				h1 {
+					text-align: center;
+					margin-bottom: 20px;
+					margin-top: 20px;
+				}
+				
+				</style>
+			</head>
+			<body>
+				<h1>${book.content}</h1>
+				<h3>Summary</h3>
+				<p>${summary.content.replaceAll("\n", "<BR/>")}</p>
+				<br>
+				<h3>Takeaway</h3>
+				<p>${takeaway.content.replaceAll("\n", "<br/>")}</p>
+			</body>
+			</html>
+		`,
 	};
 
 	transporter.sendMail(mailOptions, function (error, info) {
