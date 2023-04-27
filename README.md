@@ -12,7 +12,7 @@
 
 ## How to Use
 
-To use Booksnap, simply sign up with your email address [here](https://main--tiny-truffle-8df4c0.netlify.app/).
+To use Booksnap, simply sign up with your email address [here](https://main--tiny-truffle-8df4c0.netlify.app/) and you'll start recieving daily book summaries.
 
 ## Feedback
 
