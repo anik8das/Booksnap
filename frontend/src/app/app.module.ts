@@ -7,10 +7,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
-import { AppComponent, DialogOverviewExampleDialog } from './app.component';
+import { AppComponent } from './app.component';
+import {
+  DialogOverviewExampleDialog,
+  SubscribeComponent,
+} from './subscribe/subscribe.component';
 
 @NgModule({
-  declarations: [AppComponent, DialogOverviewExampleDialog],
+  declarations: [AppComponent, DialogOverviewExampleDialog, SubscribeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
