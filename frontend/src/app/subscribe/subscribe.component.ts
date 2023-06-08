@@ -24,7 +24,7 @@ export class SubscribeComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog);
+    const dialogRef = this.dialog.open(SignupConfirmationModal);
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
@@ -35,4 +35,4 @@ export class SubscribeComponent {
   selector: 'modal',
   templateUrl: '../modal.html',
 })
-export class DialogOverviewExampleDialog {}
+export class SignupConfirmationModal {}

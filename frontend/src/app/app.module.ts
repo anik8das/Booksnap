@@ -9,12 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import {
-  DialogOverviewExampleDialog,
+  SignupConfirmationModal,
   SubscribeComponent,
 } from './subscribe/subscribe.component';
 
 @NgModule({
-  declarations: [AppComponent, DialogOverviewExampleDialog, SubscribeComponent],
+  declarations: [AppComponent, SignupConfirmationModal, SubscribeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
