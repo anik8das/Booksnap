@@ -1,0 +1,29 @@
+<div class="subcontainer">
+  <div class="logo">
+    <h1>We <b>hate</b> to see you go!</h1>
+  </div>
+  <div class="description">
+    <p>
+      To confirm your unsubscription, please re enter your email address below.
+      <br />
+      Let us know how we can improve <a href="form">here</a>, we highly
+      appreciate your feedback!
+    </p>
+  </div>
+  <div class="subscribe">
+    <input
+      type="email"
+      id="email-input"
+      name="email"
+      placeholder="Enter your email address"
+      #email_input
+    />
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="unsubscribe(email_input.value)"
+    >
+      Sign me out :(
+    </button>
+  </div>
+</div>

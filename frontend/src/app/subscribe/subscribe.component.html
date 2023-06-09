@@ -1,0 +1,28 @@
+<div class="subcontainer">
+  <div class="logo">
+    <h1>BookSnap</h1>
+  </div>
+  <div class="description">
+    <p>
+      Start your morning by becoming smarter in 15 minutes: Get a book summary
+      delivered to your inbox daily!
+    </p>
+  </div>
+  <div class="subscribe">
+    <div class="label">Subscribe, it's free</div>
+    <input
+      type="email"
+      id="email-input"
+      name="email"
+      placeholder="Enter your email address"
+      #email_input
+    />
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="subscribe(email_input.value)"
+    >
+      Sign me up!
+    </button>
+  </div>
+</div>
