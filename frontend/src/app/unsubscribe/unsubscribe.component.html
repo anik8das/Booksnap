@@ -1,0 +1,26 @@
+<div class="subcontainer">
+  <div class="logo">
+    <h1>We hate to see you go</h1>
+  </div>
+  <div class="description">
+    <p>
+      To confirm your unsubscription, please re enter your email address below.
+    </p>
+  </div>
+  <div class="subscribe">
+    <input
+      type="email"
+      id="email-input"
+      name="email"
+      placeholder="Enter your email address"
+      #email_input
+    />
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="subscribe(email_input.value)"
+    >
+      Sign me out :(
+    </button>
+  </div>
+</div>
