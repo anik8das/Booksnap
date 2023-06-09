@@ -12,9 +12,20 @@ import {
   SignupConfirmationModal,
   SubscribeComponent,
 } from './subscribe/subscribe.component';
+import {
+  UnsubscribeComponent,
+  UnsubscribeConfirmationModal,
+} from './unsubscribe/unsubscribe.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, SignupConfirmationModal, SubscribeComponent],
+  declarations: [
+    AppComponent,
+    SignupConfirmationModal,
+    SubscribeComponent,
+    UnsubscribeComponent,
+    UnsubscribeConfirmationModal,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -22,6 +33,7 @@ import {
     MatDialogModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
