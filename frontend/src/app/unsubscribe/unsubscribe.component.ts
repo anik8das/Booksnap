@@ -1,7 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { addDoc, collection } from 'firebase/firestore';
+import {
+  collection,
+  deleteDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
 
 @Component({
   selector: 'app-unsubscribe',
@@ -15,11 +21,18 @@ export class UnsubscribeComponent {
     this.db = getFirestore(this.firestore.app);
   }
 
-  async subscribe(email: string): Promise<void> {
+  async unsubscribe(email: string): Promise<void> {
     console.log(email);
     const subscriberCollection = collection(this.db, 'subscribers');
-    await addDoc(subscriberCollection, { email });
-    console.log('added to the mailing list!');
+    const q = query(
+      collection(this.db, 'subscribers'),
+      where('email', '==', email)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      deleteDoc(doc.ref);
+    });
+    console.log('removed from the mailing list!');
     this.openDialog();
   }
 
@@ -32,7 +45,7 @@ export class UnsubscribeComponent {
 }
 
 @Component({
-  selector: 'modal',
-  templateUrl: '../modal.html',
+  selector: 'signout-modal',
+  templateUrl: './signoutModal.html',
 })
 export class UnsubscribeConfirmationModal {}

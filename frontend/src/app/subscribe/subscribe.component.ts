@@ -32,7 +32,7 @@ export class SubscribeComponent {
 }
 
 @Component({
-  selector: 'modal',
-  templateUrl: '../modal.html',
+  selector: 'signup-modal',
+  templateUrl: './signupModal.html',
 })
 export class SignupConfirmationModal {}

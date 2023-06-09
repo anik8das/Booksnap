@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   SignupConfirmationModal,
@@ -16,7 +17,6 @@ import {
   UnsubscribeComponent,
   UnsubscribeConfirmationModal,
 } from './unsubscribe/unsubscribe.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
