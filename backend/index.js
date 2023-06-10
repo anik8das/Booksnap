@@ -124,12 +124,18 @@ async function sendEmailToSubscribers() {
 				</style>
 			</head>
 			<body>
+			<header>
 				<h1>${book.content}</h1>
 				<h3>Summary</h3>
 				<p>${summary.content.replaceAll("\n", "<BR/>")}</p>
 				<br>
 				<h3>Takeaway</h3>
 				<p>${takeaway.content.replaceAll("\n", "<br/>")}</p>
+				<br>
+			<header/>
+			<footer>
+				<p>Have feedback? Reply to this email and let us know! Want to unsubscribe? Do so <a href = "https://tiny-truffle-8df4c0.netlify.app/unsubscribe">here<a/> :(</p>
+			</footer>
 			</body>
 			</html>
 		`,
