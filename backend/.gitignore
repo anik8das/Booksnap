@@ -30,3 +30,6 @@ Thumbs.db
 *-debug.log
 .runtimeconfig.json
 firestore_API.json
+
+# Python
+__pycache__/
