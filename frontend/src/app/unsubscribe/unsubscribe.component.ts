@@ -15,6 +15,7 @@ import {
   styleUrls: ['./unsubscribe.component.css'],
 })
 export class UnsubscribeComponent {
+  loading: boolean = false;
   firestore = inject(Firestore);
   db = getFirestore(this.firestore.app);
   constructor(public dialog: MatDialog) {
@@ -22,7 +23,7 @@ export class UnsubscribeComponent {
   }
 
   async unsubscribe(email: string): Promise<void> {
-    console.log(email);
+    this.loading = true;
     const subscriberCollection = collection(this.db, 'subscribers');
     const q = query(subscriberCollection, where('email', '==', email));
     const querySnapshot = await getDocs(q);
@@ -35,6 +36,7 @@ export class UnsubscribeComponent {
       });
       dialogRef = this.dialog.open(UnsubscribeConfirmationModal);
     }
+    this.loading = false;
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });

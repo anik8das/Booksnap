@@ -22,8 +22,17 @@
       mat-raised-button
       color="accent"
       (click)="unsubscribe(email_input.value)"
+      *ngIf="!loading"
     >
       Sign me out :(
     </button>
+    <mat-progress-spinner
+      class="example-margin"
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+      [diameter]="50"
+      *ngIf="loading"
+    >
+    </mat-progress-spinner>
   </div>
 </div>

@@ -11,11 +11,13 @@ import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 export class SubscribeComponent {
   firestore = inject(Firestore);
   db = getFirestore(this.firestore.app);
+  loading: boolean = false;
   constructor(public dialog: MatDialog) {
     this.db = getFirestore(this.firestore.app);
   }
 
   async subscribe(email: string): Promise<void> {
+    this.loading = true;
     const subscriberCollection = collection(this.db, 'subscribers');
     const q = query(subscriberCollection, where('email', '==', email));
     const querySnapshot = await getDocs(q);
@@ -26,6 +28,7 @@ export class SubscribeComponent {
       await addDoc(subscriberCollection, { email });
       dialogRef = this.dialog.open(SignupConfirmationModal);
     }
+    this.loading = false;
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
