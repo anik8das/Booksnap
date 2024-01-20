@@ -24,20 +24,17 @@ export class UnsubscribeComponent {
   async unsubscribe(email: string): Promise<void> {
     console.log(email);
     const subscriberCollection = collection(this.db, 'subscribers');
-    const q = query(
-      collection(this.db, 'subscribers'),
-      where('email', '==', email)
-    );
+    const q = query(subscriberCollection, where('email', '==', email));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      deleteDoc(doc.ref);
-    });
-    console.log('removed from the mailing list!');
-    this.openDialog();
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(UnsubscribeConfirmationModal);
+    let dialogRef = null;
+    if (querySnapshot.size === 0) {
+      dialogRef = this.dialog.open(EmailNotFoundModal);
+    } else {
+      querySnapshot.forEach((doc) => {
+        deleteDoc(doc.ref);
+      });
+      dialogRef = this.dialog.open(UnsubscribeConfirmationModal);
+    }
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
@@ -46,6 +43,12 @@ export class UnsubscribeComponent {
 
 @Component({
   selector: 'signout-modal',
-  templateUrl: './signoutModal.html',
+  templateUrl: '../modals/signoutConfirmation.html',
 })
 export class UnsubscribeConfirmationModal {}
+
+@Component({
+  selector: 'signout-modal',
+  templateUrl: '../modals/emailNotFound.html',
+})
+export class EmailNotFoundModal {}

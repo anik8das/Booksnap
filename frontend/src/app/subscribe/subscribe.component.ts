@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 @Component({
   selector: 'app-subscribe',
@@ -16,11 +16,19 @@ export class SubscribeComponent {
   }
 
   async subscribe(email: string): Promise<void> {
-    console.log(email);
     const subscriberCollection = collection(this.db, 'subscribers');
-    await addDoc(subscriberCollection, { email });
-    console.log('added to the mailing list!');
-    this.openDialog();
+    const q = query(subscriberCollection, where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+    let dialogRef = null;
+    if (querySnapshot.size > 0) {
+      dialogRef = this.dialog.open(AlreadySubscribedModal);
+    } else {
+      await addDoc(subscriberCollection, { email });
+      dialogRef = this.dialog.open(SignupConfirmationModal);
+    }
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
   openDialog(): void {
@@ -33,6 +41,12 @@ export class SubscribeComponent {
 
 @Component({
   selector: 'signup-modal',
-  templateUrl: './signupModal.html',
+  templateUrl: '../modals/signupConfirmation.html',
 })
 export class SignupConfirmationModal {}
+
+@Component({
+  selector: 'already-subscribed-modal',
+  templateUrl: '../modals/alreadySubscribed.html',
+})
+export class AlreadySubscribedModal {}
