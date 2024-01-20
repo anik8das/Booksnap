@@ -10,10 +10,12 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
+  AlreadySubscribedModal,
   SignupConfirmationModal,
   SubscribeComponent,
 } from './subscribe/subscribe.component';
 import {
+  EmailNotFoundModal,
   UnsubscribeComponent,
   UnsubscribeConfirmationModal,
 } from './unsubscribe/unsubscribe.component';
@@ -22,9 +24,11 @@ import {
   declarations: [
     AppComponent,
     SignupConfirmationModal,
+    AlreadySubscribedModal,
     SubscribeComponent,
     UnsubscribeComponent,
     UnsubscribeConfirmationModal,
+    EmailNotFoundModal,
   ],
   imports: [
     BrowserModule,
