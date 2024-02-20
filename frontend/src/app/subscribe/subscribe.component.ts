@@ -26,34 +26,28 @@ export class SubscribeComponent {
 
   async subscribe(email: string): Promise<void> {
     if (!this.isValidEmail(email)) {
-      alert('Please enter a valid email address');
+      this.dialog.open(InvalidEmailModal);
       return;
     }
     this.loading = true;
     const subscriberCollection = collection(this.db, 'subscribers');
     const q = query(subscriberCollection, where('email', '==', email));
     const querySnapshot = await getDocs(q);
-    let dialogRef = null;
     if (querySnapshot.size > 0) {
       // user is already subscribed, checked for category
       querySnapshot.forEach(async (doc) => {
         if (doc.data()['category'] !== this.category) {
           await updateDoc(doc.ref, { category: this.category });
-          dialogRef = this.dialog.open(CategoryUpdatedModal);
+          this.dialog.open(CategoryUpdatedModal);
         } else {
-          dialogRef = this.dialog.open(AlreadySubscribedModal);
+          this.dialog.open(AlreadySubscribedModal);
         }
       });
     } else {
       await addDoc(subscriberCollection, { email, category: this.category });
-      dialogRef = this.dialog.open(SignupConfirmationModal);
+      this.dialog.open(SignupConfirmationModal);
     }
     this.loading = false;
-    if (dialogRef) {
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log('The dialog was closed');
-      });
-    }
   }
 
   isValidEmail(email: string) {
@@ -99,4 +93,13 @@ export class AlreadySubscribedModal {
 export class CategoryUpdatedModal {
   headerText = `Genre Updated`;
   bodyText = `You were already subscribed, and your preferred category has been updated!`;
+}
+
+@Component({
+  selector: 'invalid-email-modal',
+  templateUrl: '../modals/modal.html',
+})
+export class InvalidEmailModal {
+  headerText = `Oops!`;
+  bodyText = `That doesn't look like a valid email address, could you please verify and try again?`;
 }

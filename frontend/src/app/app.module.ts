@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import {
   AlreadySubscribedModal,
   CategoryUpdatedModal,
+  InvalidEmailModal,
   SignupConfirmationModal,
   SubscribeComponent,
 } from './subscribe/subscribe.component';
@@ -39,6 +40,7 @@ import {
     EmailNotFoundModal,
     FeedbackComponent,
     FeedbackConfirmationModal,
+    InvalidEmailModal,
   ],
   imports: [
     BrowserModule,
