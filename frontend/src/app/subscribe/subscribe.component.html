@@ -8,6 +8,56 @@
       delivered to your inbox daily!
     </p>
   </div>
+
+  <div class="categories">
+    <ul>
+      <li>
+        <button
+          class="categories-button"
+          (click)="selectCategory('random')"
+          [ngClass]="category === 'random' ? 'active' : ''"
+        >
+          Random
+        </button>
+      </li>
+      <li>
+        <button
+          class="categories-button"
+          (click)="selectCategory('self')"
+          [ngClass]="category === 'self' ? 'active' : ''"
+        >
+          Self-Improvement
+        </button>
+      </li>
+      <li>
+        <button
+          class="categories-button"
+          (click)="selectCategory('biz')"
+          [ngClass]="category === 'biz' ? 'active' : ''"
+        >
+          Business & Finance
+        </button>
+      </li>
+      <li>
+        <button
+          class="categories-button"
+          (click)="selectCategory('history')"
+          [ngClass]="category === 'history' ? 'active' : ''"
+        >
+          History & Biography
+        </button>
+      </li>
+      <li>
+        <button
+          class="categories-button"
+          (click)="selectCategory('science')"
+          [ngClass]="category === 'science' ? 'active' : ''"
+        >
+          Science & Technology
+        </button>
+      </li>
+    </ul>
+  </div>
   <div class="subscribe">
     <div class="label">Subscribe, it's free</div>
     <input
@@ -15,6 +65,7 @@
       id="email-input"
       name="email"
       placeholder="Enter your email address"
+      class="email-input"
       #email_input
     />
     <button

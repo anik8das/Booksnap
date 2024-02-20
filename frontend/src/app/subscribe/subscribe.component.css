@@ -1,5 +1,5 @@
 .subcontainer {
-  background-color: rgb(255, 255, 255, 0.6);
+  background-color: rgb(255, 255, 255, 0.75);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +24,10 @@
   text-align: center;
 }
 
+.categories {
+  margin-bottom: 20px;
+}
+
 .subscribe {
   display: flex;
   flex-direction: column;
@@ -40,7 +44,17 @@
   margin-bottom: 20px;
 }
 
-input {
+.subscribe button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "MontLight" !important;
+}
+
+.email-input {
   font-size: 15px;
   padding: 10px;
   width: 60%;
@@ -52,14 +66,58 @@ input {
   text-align: center;
 }
 
-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  margin-left: 5px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  color: black !important;
+  background-color: #b0bec5 !important;
+}
+
+.active:hover {
+  color: black;
+  background-color: white;
+}
+
+.categories-button {
+  background: none;
+  color: inherit;
   border: none;
-  border-radius: 5px;
-  background-color: #4285f4;
-  color: #fff;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
-  font-family: "MontLight";
+  outline: inherit;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.categories-button:hover {
+  color: white;
+  background-color: #111;
+}
+
 }
