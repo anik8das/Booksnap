@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {
+  FeedbackComponent,
+  FeedbackConfirmationModal,
+} from './feedback/feedback.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -33,6 +37,8 @@ import {
     UnsubscribeComponent,
     UnsubscribeConfirmationModal,
     EmailNotFoundModal,
+    FeedbackComponent,
+    FeedbackConfirmationModal,
   ],
   imports: [
     BrowserModule,

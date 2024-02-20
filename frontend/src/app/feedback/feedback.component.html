@@ -1,0 +1,34 @@
+<div class="subcontainer">
+  <div class="logo">
+    <h1>Help us improve!</h1>
+  </div>
+  <div class="description">
+    <p>
+      Please let us know what feature or change you'd like us to implement, your
+      feedback is highly appreciated!
+    </p>
+  </div>
+  <div class="subscribe">
+    <textarea
+      name="feedback"
+      placeholder="Got any feedback? We'd love to hear it!"
+      #feedback_input
+    ></textarea>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="sendFeedback(feedback_input.value)"
+      *ngIf="!loading"
+    >
+      Send feedback
+    </button>
+    <mat-progress-spinner
+      class="example-margin"
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+      [diameter]="50"
+      *ngIf="loading"
+    >
+    </mat-progress-spinner>
+  </div>
+</div>
