@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   AlreadySubscribedModal,
+  CategoryUpdatedModal,
   SignupConfirmationModal,
   SubscribeComponent,
 } from './subscribe/subscribe.component';
@@ -26,6 +28,7 @@ import {
     AppComponent,
     SignupConfirmationModal,
     AlreadySubscribedModal,
+    CategoryUpdatedModal,
     SubscribeComponent,
     UnsubscribeComponent,
     UnsubscribeConfirmationModal,
@@ -40,6 +43,7 @@ import {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
