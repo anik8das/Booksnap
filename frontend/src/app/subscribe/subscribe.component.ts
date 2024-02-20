@@ -76,18 +76,27 @@ export class SubscribeComponent {
 
 @Component({
   selector: 'signup-modal',
-  templateUrl: '../modals/signupConfirmation.html',
+  templateUrl: '../modals/modal.html',
 })
-export class SignupConfirmationModal {}
+export class SignupConfirmationModal {
+  headerText = `Thank you!`;
+  bodyText = `You've been subscribed, wishing you productive mornings!`;
+}
 
 @Component({
   selector: 'already-subscribed-modal',
-  templateUrl: '../modals/alreadySubscribed.html',
+  templateUrl: '../modals/modal.html',
 })
-export class AlreadySubscribedModal {}
+export class AlreadySubscribedModal {
+  headerText = `Looks like you've already joined the party!`;
+  bodyText = `If you couldn't find our original emails, please check your junk or spam folders`;
+}
 
 @Component({
   selector: 'category-updated-modal',
-  templateUrl: '../modals/categoryUpdated.html',
+  templateUrl: '../modals/modal.html',
 })
-export class CategoryUpdatedModal {}
+export class CategoryUpdatedModal {
+  headerText = `Genre Updated`;
+  bodyText = `You were already subscribed, and your preferred category has been updated!`;
+}

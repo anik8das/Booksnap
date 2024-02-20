@@ -44,13 +44,19 @@ export class UnsubscribeComponent {
 }
 
 @Component({
-  selector: 'signout-modal',
-  templateUrl: '../modals/signoutConfirmation.html',
+  selector: 'unsubscribe-modal',
+  templateUrl: '../modals/modal.html',
 })
-export class UnsubscribeConfirmationModal {}
+export class UnsubscribeConfirmationModal {
+  headerText = `Wishing you the best`;
+  bodyText = `You've been unsubscribed, we'll miss you!`;
+}
 
 @Component({
-  selector: 'signout-modal',
-  templateUrl: '../modals/emailNotFound.html',
+  selector: 'email-not-found-modal',
+  templateUrl: '../modals/modal.html',
 })
-export class EmailNotFoundModal {}
+export class EmailNotFoundModal {
+  headerText = `Oops`;
+  bodyText = `We couldn't find your email in our database, could you please verify and try again?`;
+}
