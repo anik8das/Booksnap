@@ -120,4 +120,15 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
+.donations {
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo-icon {
+  width: 20px;
+  height: 20px;
+  padding-left: 5px;
 }
